@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Tikybot } from '../Tikybot'
-import { useFirebase } from '../Firebase'
+import firebase from '../Firebase/firebase'
 import { useHistory } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 function HomePage() {
-  const { firebase } = useFirebase();
   const [tiktok, setTiktok] = useState("");
   const [password, setPassword] = useState("");
   const tikybot = new Tikybot(firebase);

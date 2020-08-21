@@ -1,6 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import Promisse from 'promise';
 
 const config = {
     apiKey: "AIzaSyCgcG7VIlW_kgkqFpEZi19q7hNLkBFrvlo",
@@ -58,6 +59,12 @@ class Firebase {
     getUsers = () => {
         return this.db.ref('users');
     }
+
+    isInitialized() {
+        return new Promisse(resolve => {
+            this.auth.onAuthStateChanged(resolve)
+        })
+    }
 }
    
-export default Firebase;
+export default new Firebase();

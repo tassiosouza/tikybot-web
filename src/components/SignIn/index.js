@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { SignUpLink } from '../SignUp';
 import * as ROUTES from '../../constants/routes';
 import { PasswordForgetLink } from '../PasswordForget';
-import { useFirebase } from '../Firebase'
+import firebase from '../Firebase/firebase'
 import { useHistory } from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -58,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignInPage () {
-  const { firebase } = useFirebase();
   const history = useHistory();
   const classes = useStyles();
   const [state, setState] = useState({
@@ -87,7 +86,7 @@ function SignInPage () {
       firebase
       .doSignInWithEmailAndPassword(state.email, state.password)
       .then(() => {
-        firebase.doSignOut();
+        //firebase.doSignOut();
         setState({...state, loading:false});
         history.push(ROUTES.HOME);
       })

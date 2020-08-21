@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useDebugValue, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
@@ -9,20 +9,24 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import * as ROUTES from '../../constants/routes';
-import { useFirebase } from '../Firebase'
+import firebase from '../Firebase/firebase'
 
 function App () {
+  const [firebaseInitialized, setFirebaseInitialized] = useState(false);
 
-  const { firebase } = useFirebase();
-  const isSignedIn = firebase.isSignedIn();
+  useEffect(() => {
+    firebase.isInitialized().then(val => {
+      setFirebaseInitialized(val)
+    })
+  })
 
-  return (
+  return firebaseInitialized !== false ? (
     <Router>
     <div>
-      {isSignedIn && (<div>
+      <div>
         <Navigation />
         <hr />
-      </div>)}
+      </div>
       
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
@@ -36,7 +40,7 @@ function App () {
       <Route path={ROUTES.ADMIN} component={AdminPage} />
     </div>
   </Router>
-  )
+  ) : ( <h1> loading... </h1> )
 }
  
 export default App;
