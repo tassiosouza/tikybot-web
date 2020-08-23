@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-  },
+  }
 }));
 
 function SignInPage () {
@@ -112,7 +112,7 @@ function SignInPage () {
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
-        Sign in
+        Entrar
       </Typography>
       <form className={classes.form} onSubmit={handleSubmit}>
         <TextField
@@ -125,7 +125,7 @@ function SignInPage () {
           variant="outlined"
           margin="normal"
           fullWidth
-          label="Email Address"
+          label="Email"
           autoComplete="email"
           autoFocus
         />
@@ -159,12 +159,12 @@ function SignInPage () {
         <Grid container>
           <Grid item xs>
             <Link href="" onClick={() => history.push(ROUTES.PASSWORD_FORGET)} variant="body2">
-              Forgot password?
+              Esqueceu a senha ? 
             </Link>
           </Grid>
           <Grid item>
-            <Link href="" onClick={() => history.push(ROUTES.SIGN_UP)} variant="body2">
-              {"Don't have an account? Sign Up"}
+            <Link style={{ cursor: "pointer" }} onClick={() => history.push(ROUTES.SIGN_UP)} variant="body2">
+              {"Não possui um conta ? Registrar"}
             </Link>
           </Grid>
         </Grid>

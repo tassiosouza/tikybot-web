@@ -3,6 +3,7 @@ import { Tikybot } from '../Tikybot'
 import firebase from '../Firebase/firebase'
 import { useHistory } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import Dashboard from './dashboard'
 
 function HomePage() {
   const [tiktok, setTiktok] = useState("");
@@ -59,4 +60,4 @@ function HomePage() {
   );
 }
  
-export default HomePage;
+export default Dashboard;

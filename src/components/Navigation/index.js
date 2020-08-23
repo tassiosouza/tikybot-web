@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
+import firebase from '../Firebase/firebase'
 
-const Navigation = ({ authUser }) => (
-  <div>
-    <AuthUserContext.Consumer>
-      {authUser =>
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />
-      }
-    </AuthUserContext.Consumer>
-  </div>
-);
+const Navigation = () => {
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    firebase.auth.onAuthStateChanged(
+      authUser => {
+      authUser
+          ? setIsLoggedIn(true)
+          : setIsLoggedIn(false)
+      },
+    );
+  })
+  
+  return (
+    <div>
+      { isLoggedIn ? <NavigationAuth /> : null }
+    </div>
+  );
+}
 
 const NavigationAuth = () => (
   <ul>
@@ -28,10 +40,10 @@ const NavigationAuth = () => (
     <li>
       <Link to={ROUTES.ADMIN}>Admin</Link>
     </li>
-    <li></li>
     <li>
       <SignOutButton />
     </li>
+    <hr />
   </ul>
 );
  
