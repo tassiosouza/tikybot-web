@@ -43,7 +43,7 @@ const LoginView = () => {
     .doSignInWithEmailAndPassword(email, password)
     .then(() => {
       setLoading(false);
-      navigate('/app/dashboard', { replace: true });
+      navigate('/app/panel', { replace: true });
     })
     .catch(error => {
       setLoading(false);
@@ -63,7 +63,7 @@ const LoginView = () => {
           photoURL: user.photoURL
         });
       setLoading(false);
-      navigate('/app/dashboard', { replace: true });
+      navigate('/app/panel', { replace: true });
     }).catch(error => {
       setLoading(false);
       setRequestError(error);
@@ -82,7 +82,7 @@ const LoginView = () => {
           photoURL: user.photoURL
         });
       setLoading(false);
-      navigate('/app/dashboard', { replace: true });
+      navigate('/app/panel', { replace: true });
     }).catch(error => {
       setLoading(false);
       setRequestError(error);

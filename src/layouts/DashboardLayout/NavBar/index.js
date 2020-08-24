@@ -24,7 +24,7 @@ import NavItem from './NavItem';
 
 const items = [
   {
-    href: '/app/dashboard',
+    href: '/app/panel',
     icon: MonitorIcon,
     title: 'Painel'
   },

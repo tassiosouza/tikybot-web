@@ -51,7 +51,7 @@ const RegisterView = () => {
           photo: ''
         });
       setLoading(false);
-      navigate('/app/dashboard', { replace: true });
+      navigate('/app/panel', { replace: true });
     })
     .catch(error => {
       setLoading(false);

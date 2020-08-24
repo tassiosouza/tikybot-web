@@ -50,7 +50,7 @@ const RegisterView = () => {
           email: values.email,
         });
       setLoading(false);
-      navigate('/app/dashboard', { replace: true });
+      navigate('/app/panel', { replace: true });
     })
     .catch(error => {
       setLoading(false);
