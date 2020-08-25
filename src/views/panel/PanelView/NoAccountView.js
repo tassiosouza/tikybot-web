@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -9,18 +9,14 @@ import {
   colors,
   makeStyles, 
   Container,
-  Button
+  Button,
+  TextField
 } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%'
-  },
-  lockIcon: {
-    height: 20,
-    width: 20,
-    color: colors.yellow[600]
   },
   lockMessage: {
     color:colors.green[600]
@@ -39,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NoAccountView = ({ className, ...rest }) => {
   const classes = useStyles();
+  const [entering, setEntering] = useState(false);
 
   return (
     <Container >
@@ -60,7 +57,7 @@ const NoAccountView = ({ className, ...rest }) => {
               color="textSecondary"
               align='center'
               gutterBottom
-              variant="h2">
+              variant="h3">
               Conectar sua conta do TikTot
             </Typography>
           </Grid>
@@ -91,20 +88,46 @@ const NoAccountView = ({ className, ...rest }) => {
                     </Typography>
                 </Grid>
                 <Grid item xl={2}>
-                    <LockIcon className={classes.lockIcon}/>
+                    <LockIcon className={classes.lockMessage}/>
                 </Grid>
+                <Grid item hidden={!entering} style={{"width" : "100%"}}>
+                  <TextField 
+                    style={{"margin-bottom" : "15px"}}
+                    fullWidth
+                    label="Nome de usuário"
+                    variant="outlined"
+                  />
+                
+                  <TextField 
+                      fullWidth
+                      label="Senha"
+                      variant="outlined"
+                    />
+                </Grid>
+                <Grid item align="center" hidden={!entering} style={{"width" : "100%"}}>
+                    <Button color="secondary" variant="contained" onClick={()=>setEntering(true)}>
+                        <LockIcon
+                            className={classes.icon}
+                            size="20"
+                        />
+                        <span className={classes.title}>
+                        CONECTAR
+                        </span>
+                    </Button>
+                </Grid>    
                 <Grid item xl={12}>
                 <Typography
                     gutterBottom
                     variant="h6"
+                    color="textSecondary"
                     >
                     Ao conectar sua conta do TikTot aos nossos servidores, ela será armazenada usando 
                     o sistema de criptografia do Google. Garantindo que nenhum de nossos funcionários tenham
                     acesso as suas credenciais. Para saber mais, acesse.
                     </Typography>
                 </Grid>
-                <Grid item xl={12}>
-                    <Button color="secondary">
+                <Grid item xl={12} align="center" style={{"width" : "100%"}} hidden={entering}>
+                    <Button color="secondary" variant="contained" onClick={()=>setEntering(true)}>
                         <LockIcon
                             className={classes.icon}
                             size="20"
