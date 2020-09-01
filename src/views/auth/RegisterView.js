@@ -48,7 +48,8 @@ const RegisterView = () => {
         .set({
           username,
           email: values.email,
-          photo: ''
+          photoURL: '',
+          auth_state: 'pending'
         });
       setLoading(false);
       navigate('/app/panel', { replace: true });

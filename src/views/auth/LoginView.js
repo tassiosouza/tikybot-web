@@ -56,11 +56,17 @@ const LoginView = () => {
       var user = result.user;
       let username = user.displayName;
       firebase
-        .getUser(user.uid)
-        .set({
-          username,
-          email: user.email,
-          photoURL: user.photoURL
+        .getUser(user.uid).once('value', snapshot => {
+          const userRegistered = snapshot.val();
+          if(userRegistered == null){
+            firebase
+              .getUser(user.uid).set({
+              username,
+              email: user.email,
+              photoURL: user.photoURL,
+              auth_state: 'pending'
+            });
+          }
         });
       setLoading(false);
       navigate('/app/panel', { replace: true });
@@ -75,11 +81,17 @@ const LoginView = () => {
       var user = result.user;
       let username = user.displayName;
       firebase
-        .getUser(user.uid)
-        .set({
-          username,
-          email: user.email,
-          photoURL: user.photoURL
+        .getUser(user.uid).once('value', snapshot => {
+          const userRegistered = snapshot.val();
+          if(userRegistered == null){
+            firebase
+              .getUser(user.uid).set({
+              username,
+              email: user.email,
+              photoURL: user.photoURL,
+              auth_state: 'pending'
+            });
+          }
         });
       setLoading(false);
       navigate('/app/panel', { replace: true });
@@ -114,8 +126,8 @@ const LoginView = () => {
               password: ''
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
+              email: Yup.string().email('Endereço de email inválido').max(255).required('Este campo é obrigatório'),
+              password: Yup.string().max(255).required('Este campo é obrigatório')
             })}
             onSubmit={(values) => handleSubmit(values.email, values.password)}
           >

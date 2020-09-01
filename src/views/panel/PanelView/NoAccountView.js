@@ -13,6 +13,7 @@ import {
   TextField
 } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
+import TiktokForm from './TiktokForm'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,10 +38,13 @@ const NoAccountView = ({ className, ...rest }) => {
   const classes = useStyles();
   const [entering, setEntering] = useState(false);
 
+  const onCredentialSaved = () => {
+    setEntering(false);
+  }
+
   return (
     <Container >
         <Grid
-          maxWidth={false}
           container
           spacing={0}
           justify="center"
@@ -90,31 +94,9 @@ const NoAccountView = ({ className, ...rest }) => {
                 <Grid item xl={2}>
                     <LockIcon className={classes.lockMessage}/>
                 </Grid>
-                <Grid item hidden={!entering} style={{"width" : "100%"}}>
-                  <TextField 
-                    style={{"margin-bottom" : "15px"}}
-                    fullWidth
-                    label="Nome de usuário"
-                    variant="outlined"
-                  />
-                
-                  <TextField 
-                      fullWidth
-                      label="Senha"
-                      variant="outlined"
-                    />
+                <Grid item xl={2} style={{"width" : "100%"}} hidden={!entering}>
+                  <TiktokForm/>
                 </Grid>
-                <Grid item align="center" hidden={!entering} style={{"width" : "100%"}}>
-                    <Button color="secondary" variant="contained" onClick={()=>setEntering(true)}>
-                        <LockIcon
-                            className={classes.icon}
-                            size="20"
-                        />
-                        <span className={classes.title}>
-                        CONECTAR
-                        </span>
-                    </Button>
-                </Grid>    
                 <Grid item xl={12}>
                 <Typography
                     gutterBottom
