@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 
 const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
+  avatar: '/static/images/robo-crashed.jpg',
   city: 'Los Angeles',
   country: 'USA',
   jobTitle: 'Senior Developer',
@@ -27,7 +27,11 @@ const useStyles = makeStyles(() => ({
   root: {},
   avatar: {
     height: 100,
-    width: 100
+    width: 100,
+    marginBottom:20
+  },
+  status: {
+    color:"#FF4500"
   }
 }));
 
@@ -50,35 +54,23 @@ const ErrorTProfile = ({ className, ...rest }) => {
             src={user.avatar}
           />
           <Typography
-            color="textPrimary"
-            gutterBottom
-            variant="h3"
-          >
-            {user.name}
-          </Typography>
-          <Typography
-            color="textSecondary"
-            variant="body1"
-          >
-            {`${user.city} ${user.country}`}
-          </Typography>
-          <Typography
+            align='center'
             className={classes.dateText}
             color="textSecondary"
-            variant="body1"
+            variant="h6"
           >
-            {`${moment().format('hh:mm A')} ${user.timezone}`}
+            Ops! Ocorreu um erro ao tentar logar na sua conta, tente novamente.
           </Typography>
         </Box>
       </CardContent>
       <Divider />
       <CardActions>
         <Button
-          color="primary"
+          className={classes.status}
           fullWidth
           variant="text"
         >
-          Upload picture
+          TENTE NOVAMENTE
         </Button>
       </CardActions>
     </Card>

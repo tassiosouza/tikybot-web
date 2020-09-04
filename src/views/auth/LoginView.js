@@ -64,7 +64,7 @@ const LoginView = () => {
               username,
               email: user.email,
               photoURL: user.photoURL,
-              auth_state: 'pending'
+              authState: 'pending'
             });
           }
         });
@@ -89,7 +89,7 @@ const LoginView = () => {
               username,
               email: user.email,
               photoURL: user.photoURL,
-              auth_state: 'pending'
+              authState: 'pending'
             });
           }
         });

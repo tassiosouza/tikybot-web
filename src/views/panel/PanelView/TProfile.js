@@ -11,27 +11,23 @@ import {
   CardContent,
   Divider,
   Typography,
-  makeStyles
+  makeStyles,
+  CircularProgress,
+  CardHeader
 } from '@material-ui/core';
-
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  city: 'Los Angeles',
-  country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
-  timezone: 'GTM-7'
-};
 
 const useStyles = makeStyles(() => ({
   root: {},
   avatar: {
-    height: 100,
-    width: 100
+    height: 110,
+    width: 110
+  },
+  status: {
+    color:"#32CD32"
   }
 }));
 
-const TProfile = ({ className, ...rest }) => {
+const TProfile = ({ className, user, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -47,39 +43,81 @@ const TProfile = ({ className, ...rest }) => {
         >
           <Avatar
             className={classes.avatar}
-            src={user.avatar}
+            src={user.tiktokPhotoURL}
           />
           <Typography
-            color="textPrimary"
-            gutterBottom
-            variant="h3"
+              align='center'
+              color="textPrimary"
+              gutterBottom
+              variant="h4"
           >
-            {user.name}
+            {'@'+ user.credentials.username}
           </Typography>
-          <Typography
-            color="textSecondary"
-            variant="body1"
-          >
-            {`${user.city} ${user.country}`}
-          </Typography>
-          <Typography
-            className={classes.dateText}
-            color="textSecondary"
-            variant="body1"
-          >
-            {`${moment().format('hh:mm A')} ${user.timezone}`}
-          </Typography>
+          <Box display="flex" p={1} >
+            <Box p={1} alignItems='center'>
+              <Typography
+              align='center'
+              color="textPrimary"
+              gutterBottom
+              variant="h6"
+              >
+                {user.followersCount ? user.followersCount : '0'}
+              </Typography>
+              <Typography
+              color="textSecondary"
+              gutterBottom
+              variant="h6"
+              >
+                Seguindo
+              </Typography>
+            </Box>
+            <Box p={1}>
+            <Typography
+              align='center'
+              color="textPrimary"
+              gutterBottom
+              variant="h6"
+              >
+                {user.followersCount ? user.followingCount : '0'}
+              </Typography>
+            <Typography
+              color="textSecondary"
+              gutterBottom
+              variant="h6"
+              >
+                Seguidores
+              </Typography>
+            </Box>
+            <Box p={1}>
+            <Typography
+              align='center'
+              color="textPrimary"
+              gutterBottom
+              variant="h6"
+              >
+                {user.followersCount ? user.likesCount : '0'}
+              </Typography>
+            <Typography
+              color="textSecondary"
+              gutterBottom
+              variant="h6"
+              >
+                Curtidas
+              </Typography>
+            </Box>
+          </Box>
         </Box>
       </CardContent>
       <Divider />
       <CardActions>
         <Button
-          color="primary"
+          className={classes.status}
           fullWidth
           variant="text"
         >
-          Upload picture
+          RODANDO TIKYBOT
         </Button>
+        
       </CardActions>
     </Card>
   );

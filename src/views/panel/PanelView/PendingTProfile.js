@@ -29,6 +29,9 @@ const useStyles = makeStyles(() => ({
   avatar: {
     height: 100,
     width: 100
+  },
+  dateText:{
+    marginTop:20
   }
 }));
 
@@ -48,24 +51,12 @@ const PendingTProfile = ({ className, ...rest }) => {
         >
           <CircularProgress color="secondary" />
           <Typography
-            color="textPrimary"
-            gutterBottom
-            variant="h3"
-          >
-            {user.name}
-          </Typography>
-          <Typography
-            color="textSecondary"
-            variant="body1"
-          >
-            {`${user.city} ${user.country}`}
-          </Typography>
-          <Typography
+            align='center'
             className={classes.dateText}
             color="textSecondary"
-            variant="body1"
+            variant="h6"
           >
-            {`${moment().format('hh:mm A')} ${user.timezone}`}
+            Estamos verificando sua conta do Tiktok, isso pode levar alguns minutos. Volte mais tarde para verificar o status.
           </Typography>
         </Box>
       </CardContent>
@@ -76,7 +67,7 @@ const PendingTProfile = ({ className, ...rest }) => {
           fullWidth
           variant="text"
         >
-          Upload picture
+          VERIFICANDO CONTA
         </Button>
       </CardActions>
     </Card>

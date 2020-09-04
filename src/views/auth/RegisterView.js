@@ -49,7 +49,7 @@ const RegisterView = () => {
           username,
           email: values.email,
           photoURL: '',
-          auth_state: 'pending'
+          authState: 'pending'
         });
       setLoading(false);
       navigate('/app/panel', { replace: true });

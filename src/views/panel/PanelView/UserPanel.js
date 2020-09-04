@@ -72,8 +72,8 @@ const UserPanel = ({ className, user, ...rest }) => {
 
   return (
     <Container maxWidth={false}>
-        <Grid container spacing={3}>
-          <Grid item lg={8} sm={8} xl={9} xs={12} >
+        <Grid container justify='center' spacing={3}>
+          {/* <Grid item lg={8} sm={8} xl={9} xs={12} >
             <AppBar position="static" color="default" style={{ position: 'flex'}}>
               <Tabs
                 value={value}
@@ -96,11 +96,11 @@ const UserPanel = ({ className, user, ...rest }) => {
           <TabPanel value={value} index={2}>
           Em breve (Localização)
           </TabPanel>
-          </Grid>
-          <Grid item lg={4} sm={4} xl={3} xs={12} >
-            {user.auth_state === 'success' && <TProfile />}
-            {user.auth_state === 'pending' && <PendingTProfile />}
-            {user.auth_state === 'failed' && <ErrorTProfile />}
+          </Grid> */}
+          <Grid item lg={6} sm={6} xl={6} xs={11} >
+            {user.authState === 'success' && <TProfile user={user}/>}
+            {user.authState === 'pending' && <PendingTProfile />}
+            {user.authState === 'failed' && <ErrorTProfile />}
           </Grid>
         </Grid>
           
