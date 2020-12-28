@@ -117,7 +117,6 @@ const LoginView = () => {
         display="flex"
         flexDirection="column"
         height="100%"
-        justifyContent="center"
       >
         <Container maxWidth="sm">
           <Formik

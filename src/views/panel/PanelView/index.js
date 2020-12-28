@@ -33,7 +33,7 @@ const PanelView = () => {
   return (
     <Page
       className={classes.root}
-      title="Panel"
+      title="Painel do Usuário"
     >
       <Container >
         <Grid

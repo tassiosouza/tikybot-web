@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import moment from 'moment';
+import firebase from '../../../components/Firebase'
 import {
   Avatar,
   Box,
@@ -34,6 +35,14 @@ const useStyles = makeStyles(() => ({
     color:"#FF4500"
   }
 }));
+
+const tryAgain = () => {
+  firebase.getCurrentUser().child('credentials')
+  .remove().then(function(){
+   }).catch(error => {
+      alert("Error, tente novamente mais tarde");
+    });
+}
 
 const ErrorTProfile = ({ className, ...rest }) => {
   const classes = useStyles();
@@ -69,6 +78,7 @@ const ErrorTProfile = ({ className, ...rest }) => {
           className={classes.status}
           fullWidth
           variant="text"
+          onClick={tryAgain}
         >
           TENTE NOVAMENTE
         </Button>

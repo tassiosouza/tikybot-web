@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.dark,
     height: '100%',
     paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
+    paddingTop: theme.spacing(3),
   }
 }));
 
@@ -76,7 +76,6 @@ const RegisterView = () => {
         display="flex"
         flexDirection="column"
         height="100%"
-        justifyContent="center"
       >
         <Container maxWidth="sm">
           <Formik

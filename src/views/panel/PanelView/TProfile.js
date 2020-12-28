@@ -78,7 +78,7 @@ const TProfile = ({ className, user, ...rest }) => {
               gutterBottom
               variant="h6"
               >
-                {user.followersCount ? user.followingCount : '0'}
+                {user.followingCount ? user.followingCount : '0'}
               </Typography>
             <Typography
               color="textSecondary"
@@ -95,7 +95,7 @@ const TProfile = ({ className, user, ...rest }) => {
               gutterBottom
               variant="h6"
               >
-                {user.followersCount ? user.likesCount : '0'}
+                {user.likesCount ? user.likesCount : '0'}
               </Typography>
             <Typography
               color="textSecondary"
